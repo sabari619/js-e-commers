@@ -1,0 +1,118 @@
+<!-- <a href="productinfo.html">back</a> -->
+<html>
+    <head>
+        <title>Cart</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                margin-top: 90px;
+                background-image: url(./card-banner2.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .div1-1{
+                display: flex;
+            }
+            .div1{
+                width: 560px;
+                height: 352px;
+                border-radius: 10px;
+                box-shadow: 1px 1px 15px white;
+                border: 1px solid white;
+
+            }
+            .div2{
+                display: flex;
+            }
+            h2{
+                margin: 12px;
+                font-size: 22px;
+                margin-right: 220px;
+                font-weight: 300;
+                color: white;
+            }
+            h1{
+                margin: 12px;
+                color: white
+
+            }
+            .div3{
+                display: flex;
+
+            }
+            label{
+                font-size: 22px;
+                margin: 12px;
+                color: white;
+            }
+            .hh{
+                margin-right: 190px;
+            }
+            .cartbtn{
+                font-size: 16px;
+                padding: 10px;
+                margin-top: 23px;
+                border-radius: 14px;
+                background: darkcyan;
+                color: white;
+                font-style: italic;
+                padding-right: 25px;
+                padding-left: 25px;
+                border: 1px solid burlywood;
+                cursor: pointer;
+            }
+            .div4{
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div1">
+            <h1>Product Details</h1>
+            <hr/>
+            <div class="div1-1">
+            <h2> Price (1 item)</h2>
+            <label id="l1"></label>
+            </div>
+            <div class="div1-1">
+                <h2 class="hh">Product you want</h2>
+                <label id="l4"></label>
+                </div>
+            <div class="div2">
+                <h2 class="hh"> Delevery Charge</h2>
+                <label id="l2" style="color: green;">free..!</label>
+            </div>
+            <hr/>
+            <div class="div3">
+                <h2>Total Amount</h2>
+            <label id="l3"></label>
+            </div>
+            <div class="div4">
+            <button class="cartbtn">Make Payment</button>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+<script>
+    var sellpri=localStorage.getItem('sell');
+    console.log('sellPrice-->',sellpri);
+    var itm=localStorage.getItem('howManuItem');
+    console.log('item selected-->',itm);
+    var itmsc=itm*sellpri;
+    console.log('--->',itmsc);
+    document.getElementById('l1').innerHTML=sellpri;
+    document.getElementById('l3').innerHTML=itmsc;
+    document.getElementById('l4').innerHTML=itm;
+</script>

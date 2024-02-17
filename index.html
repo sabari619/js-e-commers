@@ -1,0 +1,389 @@
+<html>
+    <head>
+        <title>Add product</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+           body{
+            background-image: url(./adidas-bg2.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+
+           }
+            .header{
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            .header-head{
+                font-size: 37px;
+                color: aliceblue;
+                font-style: italic;
+            }
+            
+            .down-header{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 40px;
+                border: 2px solid red;
+                width: 590px;
+                padding-left: 75px;
+                padding-right: 75px;
+                border-radius: 29px;
+                box-shadow: 1px 1px 25px;
+            }
+            .post-header{
+                display: flex;
+                justify-content: center;
+            }
+            form{
+                margin-top: 20px;
+                width: 100%;
+            }
+            #orginalPrice{
+                margin-left: 38px;
+                border: 1.5px solid;
+                font-size: 15px;
+                width: 200px;
+            }
+            input{
+                margin-left: 71px;
+                border: 1.5px solid;
+                font-size: 15px;
+                height: 30px;
+                padding-left: 5px;
+                width: 200px;
+            }
+            .select-div{
+                margin-top: 20px;
+            }
+            #selectDiscount{
+                margin-left: 11px;
+                border: 1.5px solid;
+                font-size: 15px;
+                width: 100px;
+            }
+            .discount-visible{
+                margin-top: 20px;
+            }
+            #output{
+                display: block;
+                height: 95px;
+                object-fit: contain;
+                width: 136px;
+                margin-left: 153px;
+                margin-top: 6px;
+            }
+            #Discount{
+                height: 30px;
+                margin-left: 23px;
+            }
+            span{
+                color: red;
+            }
+            .sell-price{
+                margin-top: 20px;
+            }
+            #maxQuantity{
+                margin-left: 4px;
+            }
+            .prdname{
+                margin-left: 45px;
+            }
+           
+            button{
+                margin-top: 65px;
+                height: 55px;
+                width: 155px;
+                border-radius: 18px;
+                font-size: 18px;
+                background: cadetblue;
+                color: black;
+                font-weight: 600;
+                cursor: pointer;
+            }
+            .headname{
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .div1{
+                margin-top: 20px;
+                width: 100%;
+            }
+            #productname{
+                margin-left: 82px;
+                position: absolute;
+            }
+            .div2{
+                margin-top: 33px;
+                width: 100%;
+            }
+            #discriptionProduct{
+                margin-left: 48px;
+                width: 189px;
+                height: 66px;
+                position: absolute;
+            }
+            .div3{
+                margin-top: 68px;
+                /* margin-bottom: 20px; */
+            }
+            .im{
+                margin-left: 27px;
+            }
+            #inputimg{
+                border: none;
+                width: 220px;
+                margin-left: 73px;
+            }
+            .dd{
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1 class="header-head">Add Product</h1>
+        </div>
+        <div class="post-header">
+        <div class="down-header">
+            <div class="div1">
+                <label class="headname">Name</label><span>*</span>
+                <input type="text" id="productname" placeholder="Enter Product name"/>
+                <label id="prdnameerror" style="display: none;color: red;">Enter Product name</label>
+            </div>
+            <div class="div2">
+                <label class="dis">Discribtion</label><span>*</span>
+                <textarea id="discriptionProduct" placeholder="Enter Discribtion" onchange="discription()"></textarea>
+                <label id="disctriptionerror" style="display: none;color: red;">Enter Discription</label>
+            </div>
+            <div class="dd">
+                <div class="div3">
+                    <label class="im">image</label><span>*</span>
+                    <input type="file" id="inputimg" onchange="loadfile(event)" />
+                <label id="imgerror" style="display: none;color: red;">Uplod Image</label>
+                    <img id="output" style="display: none;"/>
+                </div>
+            </div>
+            <form>
+                <div>
+                    <label>Orginal Price</label><span>*</span>
+                <input type="text" id="orginalPrice" placeholder="Enter Orginal Price"/>
+                <label id="orginalPricEerror" style="display: none;color: red;">Enter Orginal Price</label>
+                </div>
+                <div class="select-div">
+                    <label>Select Discount</label><span>*</span>
+                <select id="Discount" onchange="selectDiscount(event)">
+                    <option value="">select</option>
+                    <option value="percentage">Percentage</option>
+                    <option value="flat">Flat</option>
+                </select>
+                <label id="discounterror" style="display: none;color: red;">Please Select</label>
+                <div class="discount-visible">
+                    <div>
+                        <label style="display: none;" id="perlabel">Percentage</label>
+                        <input type="text" value="" placeholder="Enter Percentage" id="per" style="border:0.5px solid black;margin-left: 50px;display: none;" onchange="ss(event)"/>
+                    </div>
+                    <div>
+                        <label style="display: none;"id="flalabel">Flat</label>
+                        <input type="text" value="" placeholder="Enter Flat" id="fla" style="border:0.5px solid black;margin-left: 95px;display: none;" onchange="pp(event)"/>
+                    </div>  
+                </div>
+                </div>
+                <div class="sell-price">
+                    <label>Sell Price</label>
+                <input type="text" disabled id="sellPrice" value="" />
+                </div>
+                <div class="sell-price">
+                    <label>Maximun Quantity</label><span>*</span>
+                <input type="text" id="maxQuantity" value="" placeholder="Enter Maximun Quantity"/>
+                <label id="maxqerror" style="display: none;color: red;">Enter Maximum Quantity</label>
+                </div>   
+            </form>
+            <div>
+                <button onclick="addProduct()"> Add Product</button>
+            </div>
+            
+        </div>
+        </div>
+    </body>
+</html>
+<script>
+
+    function discription(){
+        // console.log('---->',dise);
+        
+        var dise=document.getElementById('discriptionProduct').value;
+        if(dise.length>25){
+            var diss=document.getElementById('discriptionProduct').value;
+            localStorage.setItem('textArea',diss);
+            var txtt=dise.substr(0,25)+"...";
+            console.log('--->',txtt);
+        document.getElementById('discriptionProduct').value=txtt;  
+        }
+        else{
+            var diss=document.getElementById('discriptionProduct').value;
+            localStorage.setItem('textArea',diss);
+        }
+    }
+
+     function loadfile(event){
+        var filename=event.target.files[0].type;
+        var filess=filename.split('/');
+        if(filess[1]=='jpeg'||filess[1]=='png'||filess[1]=='jpg'){
+            var output=document.getElementById('output').style="display: block;";
+            var reader=new FileReader();
+            reader.onload=function(){
+                var output=document.getElementById('output');
+                output.src=reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+            // localStorage.setItem("previewImage", output.src);
+        }else{
+            alert('uplod valid image file')
+        }
+    }
+    
+    function selectDiscount(event){
+    console.log('selected ===>',event.target.value);
+    var ss=event.target.value;
+        localStorage.setItem('select',ss);
+    if(ss=='percentage'){
+        document.getElementById('perlabel').style="display:block;position: absolute;";
+        document.getElementById('flalabel').style="display:none;";
+        document.getElementById('per').style="black;display:block;margin-left: 137px;";
+        document.getElementById('fla').style="display:none;";
+
+    }
+    else if(ss=='flat'){
+        document.getElementById('flalabel').style="display:block;position: absolute;";
+        document.getElementById('perlabel').style="display:none;";
+        document.getElementById('fla').style="margin-left: 137px;display:block;"; 
+        document.getElementById('per').style="display:none;";
+    }
+
+    }
+    function ss(event){
+        var orgi = document.getElementById('orginalPrice').value;
+        var pers = document.getElementById('per').value;
+        if(pers){
+            var a=orgi*pers/100;
+            var b=orgi-a;
+            var c = document.getElementById('sellPrice').value=b;
+            // console.log('--->',pers);
+        }
+    }
+    function pp(event){
+        var orgi = document.getElementById('orginalPrice').value;
+        var flate = document.getElementById('fla').value;
+        if(flate){
+            var d=orgi-flate;
+            var e = document.getElementById('sellPrice').value=d;
+            // console.log('--->',flate);
+        }
+       }
+       function addProduct(){
+
+        var prdname=document.getElementById('productname').value;
+        localStorage.setItem('productname',prdname);
+        if(prdname){
+        document.getElementById('productname').style="border:1px solid black";
+        document.getElementById('prdnameerror').style="display:none;color:red";
+        }
+        else{
+            document.getElementById('productname').style="border:2px solid red";
+            document.getElementById('prdnameerror').style="display:block;color:red;margin-left: 128px;margin-top: 11px;";
+        }
+        var diss=document.getElementById('discriptionProduct').value;
+        // localStorage.setItem('textArea',diss);
+        if(diss){
+        document.getElementById('discriptionProduct').style="border:1px solid black";
+        document.getElementById('disctriptionerror').style="display:none;color:red";
+        }
+        else{
+            document.getElementById('discriptionProduct').style="border:2px solid red";
+            document.getElementById('disctriptionerror').style="display:block;color:red;margin-left: 128px;margin-top: 50px;";
+        }
+        var maxq=document.getElementById('maxQuantity').value;
+        localStorage.setItem('maxQuantity',maxq);
+        if(maxq){
+            document.getElementById('maxQuantity').style="border:1px solid black";
+            document.getElementById('maxqerror').style="display:none;color:red";
+        }
+        else{
+            document.getElementById('maxQuantity').style="border:2px solid red";
+            document.getElementById('maxqerror').style="display:block;color:red;margin-left: 142px;";
+        }
+        var orgiprice=document.getElementById('orginalPrice').value;
+        if(orgiprice){
+            document.getElementById('orginalPrice').style="border:1px solid black";
+            document.getElementById('orginalPricEerror').style="display:none;color:red";
+        }
+        else{
+            document.getElementById('orginalPrice').style="border:2px solid red";
+            document.getElementById('orginalPricEerror').style="display:block;color:red;margin-left: 142px;";
+        }
+       var disci= document.getElementById('Discount').value;
+       if(disci){
+        document.getElementById('discounterror').style="display:none;color:red";
+       }
+       else{
+        document.getElementById('discounterror').style="display:block;color:red;margin-left: 142px;";
+       }
+        var sell=document.getElementById('sellPrice').value;
+        localStorage.setItem('sellprice',sell);
+        if(prdname && diss && maxq && orgiprice){
+        if(sell){
+        window.location.href="productinfo.html";
+        }
+        }
+        else{
+            alert('Please Update Given Details')
+        }
+        var fileInput = document.getElementById("inputimg");
+        var vv=fileInput.files.length > 0;
+        if (vv) {
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var imageData = event.target.result;
+            localStorage.setItem("previewImage", imageData);
+            // window.location.href = "productinfo.html";
+        };
+        reader.readAsDataURL(file);
+        document.getElementById('imgerror').style="display:none;color:red";
+       }
+       else{
+        document.getElementById('imgerror').style="display:block;color:red;margin-left: 160px;";
+       }
+       var ji=document.getElementById('per').value;
+       var ii=document.getElementById('fla').value;
+       if(ji){
+         var pp =localStorage.setItem('percentage',ji);
+       
+        var vrr= localStorage.setItem('flat',ii);
+
+        // console.log('--->',vrr);
+        // console.log('--->',pp);
+       }
+       else if(ii){
+        localStorage.setItem('flat',ii);
+        // localStorage.setItem('percentage',ji).value=null;
+
+       }
+
+    }
+   
+       
+
+
+
+
+
+
+
+</script>
